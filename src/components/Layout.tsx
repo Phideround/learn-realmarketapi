@@ -5,6 +5,7 @@ import logoAsset from "@/assets/logo.png.asset.json";
 import { categories } from "@/content/categories";
 import { GlobalSearch } from "./GlobalSearch";
 import { socials } from "./SocialIcons";
+import { Analytics } from "@vercel/analytics/next"
 
 function ThemeToggle() {
   const [dark, setDark] = useState(false);
@@ -35,6 +36,7 @@ function ThemeToggle() {
 export function SiteHeader() {
   return (
     <header className="sticky top-0 z-40 border-b border-border bg-background/85 backdrop-blur">
+      <Analytics />
       <div className="mx-auto flex h-14 max-w-6xl items-center justify-between gap-4 px-4 sm:px-6">
         <Link to="/" className="flex items-center gap-2">
           <img src={logoAsset.url} alt="Trading Academy" className="h-7 w-7" width={28} height={28} />
