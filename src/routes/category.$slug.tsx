@@ -54,7 +54,7 @@ export const Route = createFileRoute("/category/$slug")({
 });
 
 function CategoryPage() {
-  const { cat } = Route.useLoaderData();
+  const { cat } = Route.useLoaderData() as { cat: Category };
   const list = articlesByCategory(cat.slug);
 
   return (
