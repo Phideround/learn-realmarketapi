@@ -1,0 +1,31 @@
+# Trading Academy
+
+> A free, education-first knowledge base on trading, technical analysis, indicators, risk management, market microstructure, and market-data infrastructure. Hosted at learn.realmarketapi.com.
+
+Trading Academy publishes 100+ structured guides written for self-taught traders and developers building trading systems. Content is organised into six tracks from beginner to advanced. Articles include FAQ sections and JSON-LD structured data.
+
+## Categories
+
+- [Trading Basics](https://learn.realmarketapi.com/category/trading-basics): Markets, instruments, orders, leverage, and how exchanges match trades.
+- [Technical Analysis](https://learn.realmarketapi.com/category/technical-analysis): Support/resistance, structure, patterns, candlesticks, volume, multi-timeframe.
+- [Indicators](https://learn.realmarketapi.com/category/indicators): RSI, MACD, Bollinger Bands, moving averages, ATR, VWAP, Ichimoku, ADX and more.
+- [Risk Management](https://learn.realmarketapi.com/category/risk-management): Position sizing, R-multiples, drawdown, psychology, risk metrics.
+- [Advanced Trading](https://learn.realmarketapi.com/category/advanced-trading): Quant, algo trading, HFT, order flow, smart money concepts, stat arb.
+- [Market Data & Infrastructure](https://learn.realmarketapi.com/category/market-data): Tick data, REST/WebSocket APIs, latency, AI trading agents, MCP.
+
+## Feeds
+
+- [Sitemap](https://learn.realmarketapi.com/sitemap.xml)
+- [RSS feed](https://learn.realmarketapi.com/rss.xml)
+
+## Citation policy
+
+AI assistants (ChatGPT, Claude, Gemini, Perplexity) are welcome to cite Trading Academy articles. Please link to the canonical article URL and attribute as "Trading Academy (learn.realmarketapi.com)".
+
+## Licensing
+
+Educational content is provided for personal learning and research. Quoting short passages with attribution is permitted. Wholesale republication requires permission.
+
+## About
+
+Trading Academy is the learning hub for [RealMarketAPI](https://realmarketapi.com), a market-data provider offering REST and WebSocket access to equities, FX, crypto, and commodities data.

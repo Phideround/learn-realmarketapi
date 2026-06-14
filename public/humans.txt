@@ -1,0 +1,11 @@
+/* TEAM */
+Site: Trading Academy
+Purpose: Education-first knowledge base on trading and market data.
+Contact: hello@realmarketapi.com
+
+/* THANKS */
+Built with TanStack Start, React, and Tailwind CSS.
+
+/* SITE */
+Standards: HTML5, JSON-LD, Open Graph, RSS 2.0
+Components: TanStack Router, Vite
