@@ -2,12 +2,12 @@ import { createFileRoute, notFound } from "@tanstack/react-router";
 import { Layout } from "@/components/Layout";
 import { ArticleCard } from "@/components/ArticleCard";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
-import { getCategory, categories } from "@/content/categories";
+import { getCategory, categories, type Category } from "@/content/categories";
 import { articlesByCategory } from "@/content/articles";
 import { SITE, breadcrumbJsonLd } from "@/lib/seo";
 
 export const Route = createFileRoute("/category/$slug")({
-  loader: ({ params }) => {
+  loader: ({ params }): { cat: Category } => {
     const cat = getCategory(params.slug);
     if (!cat) throw notFound();
     return { cat };

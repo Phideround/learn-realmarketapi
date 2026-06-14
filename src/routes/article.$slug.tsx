@@ -2,12 +2,12 @@ import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { Layout } from "@/components/Layout";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { ArticleCard } from "@/components/ArticleCard";
-import { articles, getArticle } from "@/content/articles";
+import { articles, getArticle, type Article } from "@/content/articles";
 import { getCategory } from "@/content/categories";
 import { SITE, articleJsonLd, breadcrumbJsonLd, faqJsonLd } from "@/lib/seo";
 
 export const Route = createFileRoute("/article/$slug")({
-  loader: ({ params }) => {
+  loader: ({ params }): { article: Article } => {
     const article = getArticle(params.slug);
     if (!article) throw notFound();
     return { article };
