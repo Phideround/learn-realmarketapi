@@ -2,6 +2,7 @@ import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { Layout } from "@/components/Layout";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { ArticleCard } from "@/components/ArticleCard";
+import { SectionIcon } from "@/components/SectionIcon";
 import { articles, getArticle, type Article } from "@/content/articles";
 import { getCategory } from "@/content/categories";
 import { SITE, articleJsonLd, breadcrumbJsonLd, faqJsonLd } from "@/lib/seo";
