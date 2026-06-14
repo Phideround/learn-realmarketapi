@@ -77,14 +77,18 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Lovable App" },
-      { name: "description", content: "Lovable Generated Project" },
+      { title: "Learn - RealMarketAPI" },
+      { name: "description", content: "Stream live gold, forex, crypto, and stock prices directly into your app — via REST, WebSocket, MCP, or Telegram Bot." },
       { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Lovable App" },
-      { property: "og:description", content: "Lovable Generated Project" },
+      { property: "og:title", content: "Learn - RealMarketAPI" },
+      { property: "og:description", content: "Stream live gold, forex, crypto, and stock prices directly into your app — via REST, WebSocket, MCP, or Telegram Bot." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
       { name: "twitter:site", content: "@Lovable" },
+      { name: "twitter:title", content: "Learn - RealMarketAPI" },
+      { name: "twitter:description", content: "Stream live gold, forex, crypto, and stock prices directly into your app — via REST, WebSocket, MCP, or Telegram Bot." },
+      { property: "og:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/iAjuJ57WvoYcYqtgbTF2jVs7ZLA3/social-images/social-1781450837540-logo.webp" },
+      { name: "twitter:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/iAjuJ57WvoYcYqtgbTF2jVs7ZLA3/social-images/social-1781450837540-logo.webp" },
     ],
     links: [
       {
