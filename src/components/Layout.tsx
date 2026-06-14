@@ -5,7 +5,7 @@ import logoAsset from "@/assets/logo.png.asset.json";
 import { categories } from "@/content/categories";
 import { GlobalSearch } from "./GlobalSearch";
 import { socials } from "./SocialIcons";
-import { Analytics } from "@vercel/analytics/next"
+import { Analytics } from "@vercel/analytics/react";
 
 function ThemeToggle() {
   const [dark, setDark] = useState(false);
