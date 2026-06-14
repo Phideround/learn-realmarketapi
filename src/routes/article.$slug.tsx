@@ -69,7 +69,7 @@ function slugifyHeading(s: string) {
 }
 
 function ArticlePage() {
-  const { article } = Route.useLoaderData();
+  const { article } = Route.useLoaderData() as { article: Article };
   const cat = getCategory(article.category);
   const related = article.related
     .map((s) => articles.find((a) => a.slug === s))
