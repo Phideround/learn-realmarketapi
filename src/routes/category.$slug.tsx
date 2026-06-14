@@ -59,32 +59,32 @@ function CategoryPage() {
 
   return (
     <Layout>
-      <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6">
+      <div className="mx-auto max-w-6xl px-4 py-8 sm:px-6">
         <Breadcrumbs
           items={[
             { label: "Home", to: "/" },
             { label: cat.name },
           ]}
         />
-        <header className="mb-10 max-w-3xl">
-          <div className="mb-3 inline-flex items-center gap-2 text-xs">
+        <header className="mb-6 max-w-3xl">
+          <div className="mb-2 inline-flex items-center gap-2 text-xs">
             <span className="rounded-full bg-accent px-2.5 py-1 font-medium text-accent-foreground">
               {cat.level}
             </span>
             <span className="text-muted-foreground">{list.length} articles</span>
           </div>
           <h1 className="text-3xl font-semibold tracking-tight sm:text-4xl">{cat.name}</h1>
-          <p className="mt-3 text-lg leading-relaxed text-muted-foreground">{cat.longDescription}</p>
+          <p className="mt-2 text-base leading-relaxed text-muted-foreground sm:text-lg">{cat.longDescription}</p>
         </header>
 
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
           {list.map((a) => (
             <ArticleCard key={a.slug} article={a} />
           ))}
         </div>
 
-        <div className="mt-16 border-t border-border pt-10">
-          <h2 className="mb-4 text-sm font-semibold uppercase tracking-wider text-muted-foreground">
+        <div className="mt-10 border-t border-border pt-6">
+          <h2 className="mb-3 text-sm font-semibold uppercase tracking-wider text-muted-foreground">
             Other tracks
           </h2>
           <div className="flex flex-wrap gap-2">
