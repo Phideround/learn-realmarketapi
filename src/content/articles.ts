@@ -1,9 +1,11 @@
 import { categories } from "./categories";
+import { mcpAgentsGuide, websocketStreamingGuide, wmaGuide } from "./guides";
 
 export interface Section {
   heading: string;
   paragraphs: string[];
   bullets?: string[];
+  code?: { language: string; content: string };
 }
 
 export interface FAQ {
@@ -26,8 +28,19 @@ export interface Article {
   related: string[]; // slugs (computed later if empty)
 }
 
-// Topic seed list — categorised. Counts match the brief: 20/20/20/15/15/10 = 100.
-type Seed = { title: string; slug?: string; tags?: string[] };
+// Topic seed list — categorised. Template seeds: 20/20/20/15/15/10 = 100, plus
+// hand-written guides from ./guides.
+// Optional fields override the category template for hand-written guides.
+export type Seed = {
+  title: string;
+  slug?: string;
+  tags?: string[];
+  description?: string;
+  intro?: string;
+  sections?: Section[];
+  faqs?: FAQ[];
+  updated?: string; // ISO date
+};
 
 const basics: Seed[] = [
   { title: "What Is Trading?" },
@@ -96,6 +109,7 @@ const indicators: Seed[] = [
   { title: "Money Flow Index" },
   { title: "Chaikin Money Flow" },
   { title: "Combining Indicators Without Redundancy" },
+  wmaGuide,
 ];
 
 const risk: Seed[] = [
@@ -145,6 +159,8 @@ const data: Seed[] = [
   { title: "Building Trading Applications" },
   { title: "AI Trading Agents" },
   { title: "MCP for Financial Applications" },
+  websocketStreamingGuide,
+  mcpAgentsGuide,
 ];
 
 const slugify = (s: string) =>
@@ -161,14 +177,18 @@ function buildArticle(seed: Seed, categorySlug: string, index: number): Article 
   const cat = categories.find((c) => c.slug === categorySlug)!;
   const topic = seed.title;
 
-  const intro = introFor(topic, cat.slug);
-  const sections = sectionsFor(topic, cat.slug);
-  const faqs = faqsFor(topic, cat.slug);
+  const intro = seed.intro ?? introFor(topic, cat.slug);
+  const sections = seed.sections ?? sectionsFor(topic, cat.slug);
+  const faqs = seed.faqs ?? faqsFor(topic, cat.slug);
 
   const wordCount =
     intro.length +
     sections.reduce(
-      (acc, s) => acc + s.paragraphs.join(" ").length + (s.bullets?.join(" ").length ?? 0),
+      (acc, s) =>
+        acc +
+        s.paragraphs.join(" ").length +
+        (s.bullets?.join(" ").length ?? 0) +
+        (s.code?.content.length ?? 0),
       0,
     ) +
     faqs.reduce((acc, f) => acc + f.q.length + f.a.length, 0);
@@ -176,12 +196,12 @@ function buildArticle(seed: Seed, categorySlug: string, index: number): Article 
   return {
     slug,
     title: topic,
-    description: descriptionFor(topic, cat.name),
+    description: seed.description ?? descriptionFor(topic, cat.name),
     category: cat.slug,
     tags: [cat.name, cat.level, ...(seed.tags ?? [])],
     level: cat.level,
     readingMinutes: minutes("x ".repeat(wordCount / 5)),
-    updated: dateFor(cat.slug, index),
+    updated: seed.updated ?? dateFor(cat.slug, index),
     intro,
     sections,
     faqs,

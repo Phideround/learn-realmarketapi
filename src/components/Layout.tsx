@@ -1,11 +1,12 @@
 import { Link } from "@tanstack/react-router";
-import { Mail, Globe, BookOpen, KeyRound } from "lucide-react";
+import { Mail, Globe, BookOpen, KeyRound, Calculator, Gamepad2 } from "lucide-react";
 import { type ReactNode, useEffect, useState } from "react";
 import logoAsset from "@/assets/logo.png.asset.json";
 import { categories } from "@/content/categories";
 import { GlobalSearch } from "./GlobalSearch";
 import { socials } from "./SocialIcons";
 import { Analytics } from "@vercel/analytics/react";
+import { productLinks } from "@/lib/links";
 
 function ThemeToggle() {
   const [dark, setDark] = useState(false);
@@ -56,6 +57,13 @@ export function SiteHeader() {
         </nav>
         <div className="flex items-center gap-2">
           <GlobalSearch />
+          <a
+            href={productLinks.register("header_cta")}
+            rel="noopener"
+            className="hidden items-center gap-1.5 rounded-md bg-primary px-2.5 py-1.5 text-xs font-medium text-primary-foreground transition-colors hover:bg-primary/90 sm:inline-flex"
+          >
+            <KeyRound className="h-3.5 w-3.5" /> Get API key
+          </a>
           <ThemeToggle />
         </div>
       </div>
@@ -117,18 +125,28 @@ export function SiteFooter() {
           </h4>
           <ul className="space-y-1.5 text-sm">
             <li>
-              <a href="https://realmarketapi.com" rel="noopener" className="inline-flex items-center gap-1.5 hover:text-primary">
+              <a href={productLinks.home("footer")} rel="noopener" className="inline-flex items-center gap-1.5 hover:text-primary">
                 <Globe className="h-3.5 w-3.5" /> Home
               </a>
             </li>
             <li>
-              <a href="https://realmarketapi.com/docs" rel="noopener" className="inline-flex items-center gap-1.5 hover:text-primary">
+              <a href={productLinks.docs("footer")} rel="noopener" className="inline-flex items-center gap-1.5 hover:text-primary">
                 <BookOpen className="h-3.5 w-3.5" /> Documentation
               </a>
             </li>
             <li>
-              <a href="https://realmarketapi.com/register" rel="noopener" className="inline-flex items-center gap-1.5 hover:text-primary">
+              <a href={productLinks.register("footer")} rel="noopener" className="inline-flex items-center gap-1.5 hover:text-primary">
                 <KeyRound className="h-3.5 w-3.5" /> Get API key
+              </a>
+            </li>
+            <li>
+              <a href={productLinks.calculators("footer")} rel="noopener" className="inline-flex items-center gap-1.5 hover:text-primary">
+                <Calculator className="h-3.5 w-3.5" /> Trading calculators
+              </a>
+            </li>
+            <li>
+              <a href={productLinks.game("footer")} rel="noopener" className="inline-flex items-center gap-1.5 hover:text-primary">
+                <Gamepad2 className="h-3.5 w-3.5" /> Trading game
               </a>
             </li>
             <li>
@@ -156,7 +174,7 @@ export function SiteFooter() {
               </a>
             </li>
             <li>
-              <a href="https://realmarketapi.com" rel="noopener" className="inline-flex items-center gap-1.5 hover:text-primary">
+              <a href={productLinks.home("footer_contact")} rel="noopener" className="inline-flex items-center gap-1.5 hover:text-primary">
                 <Globe className="h-3.5 w-3.5" /> realmarketapi.com
               </a>
             </li>

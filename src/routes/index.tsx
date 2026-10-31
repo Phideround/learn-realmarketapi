@@ -4,6 +4,7 @@ import { ArticleCard } from "@/components/ArticleCard";
 import { categories } from "@/content/categories";
 import { articles, articlesByCategory } from "@/content/articles";
 import { SITE } from "@/lib/seo";
+import { productLinks } from "@/lib/links";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -78,7 +79,7 @@ function HomePage() {
                 For developers
               </Link>
               <a
-                href="https://realmarketapi.com/docs"
+                href={productLinks.docs("home_hero")}
                 rel="noopener"
                 className="inline-flex items-center rounded-md border border-border bg-card px-4 py-2 text-sm font-medium transition-colors hover:bg-secondary"
               >
@@ -163,11 +164,11 @@ function HomePage() {
               <h3 className="text-xl font-semibold">Build on real market data</h3>
               <p className="mt-1.5 text-sm text-muted-foreground">
                 When you're ready to go from charts to code,{" "}
-                <a href="https://realmarketapi.com" rel="noopener" className="font-medium text-primary hover:underline">
+                <a href={productLinks.home("home_cta")} rel="noopener" className="font-medium text-primary hover:underline">
                   RealMarketAPI
                 </a>{" "}
                 provides REST &amp; WebSocket feeds for equities, FX, crypto, and commodities — see the{" "}
-                <a href="https://realmarketapi.com/docs" rel="noopener" className="font-medium text-primary hover:underline">
+                <a href={productLinks.docs("home_cta")} rel="noopener" className="font-medium text-primary hover:underline">
                   developer docs
                 </a>
                 .
@@ -175,14 +176,14 @@ function HomePage() {
             </div>
             <div className="flex flex-wrap gap-2">
               <a
-                href="https://realmarketapi.com/register"
+                href={productLinks.register("home_cta")}
                 rel="noopener"
                 className="inline-flex items-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground hover:bg-primary/90"
               >
                 Get free API key →
               </a>
               <a
-                href="https://realmarketapi.com/docs"
+                href={productLinks.docs("home_cta")}
                 rel="noopener"
                 className="inline-flex items-center rounded-md border border-border bg-card px-4 py-2 text-sm font-medium hover:bg-secondary"
               >

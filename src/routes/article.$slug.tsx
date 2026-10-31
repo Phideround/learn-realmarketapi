@@ -6,6 +6,7 @@ import { SectionIcon } from "@/components/SectionIcon";
 import { articles, getArticle, type Article } from "@/content/articles";
 import { getCategory } from "@/content/categories";
 import { SITE, articleJsonLd, breadcrumbJsonLd, faqJsonLd } from "@/lib/seo";
+import { calculatorFor, productLinks } from "@/lib/links";
 
 export const Route = createFileRoute("/article/$slug")({
   loader: ({ params }): { article: Article } => {
@@ -75,6 +76,7 @@ function ArticlePage() {
   const related = article.related
     .map((s) => articles.find((a) => a.slug === s))
     .filter(Boolean) as typeof articles;
+  const calculator = calculatorFor(article);
 
   return (
     <Layout>
@@ -129,6 +131,11 @@ function ArticlePage() {
                         ))}
                       </ul>
                     )}
+                    {s.code && (
+                      <pre aria-label={`${s.code.language} example`}>
+                        <code>{s.code.content}</code>
+                      </pre>
+                    )}
                   </section>
                 );
               })}
@@ -166,21 +173,61 @@ function ArticlePage() {
 
             {/* CTA */}
             <div className="mt-5 rounded-lg border border-border bg-accent/30 p-5">
-              <h3 className="text-base font-semibold">Want to build on real data?</h3>
-              <p className="mt-1 text-sm text-muted-foreground">
-                <a href="https://realmarketapi.com" rel="noopener" className="font-medium text-primary hover:underline">
-                  RealMarketAPI
-                </a>{" "}
-                gives you REST and WebSocket access to global market data with documented latency. Read the{" "}
-                <a href="https://realmarketapi.com/docs" rel="noopener" className="font-medium text-primary hover:underline">
-                  docs
-                </a>{" "}
-                or{" "}
-                <a href="https://realmarketapi.com/register" rel="noopener" className="font-medium text-primary hover:underline">
-                  get a free API key
-                </a>
-                .
-              </p>
+              {calculator ? (
+                <>
+                  <h3 className="text-base font-semibold">Put the numbers to work</h3>
+                  <p className="mt-1 text-sm text-muted-foreground">
+                    Run your own figures through the free{" "}
+                    <a href={calculator.href} rel="noopener" className="font-medium text-primary hover:underline">
+                      {calculator.name}
+                    </a>{" "}
+                    before your next trade.
+                  </p>
+                  <div className="mt-4 flex flex-wrap gap-2">
+                    <a
+                      href={calculator.href}
+                      rel="noopener"
+                      className="inline-flex items-center rounded-md bg-primary px-3.5 py-2 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
+                    >
+                      Open {calculator.name}
+                    </a>
+                    <a
+                      href={productLinks.register("article_cta")}
+                      rel="noopener"
+                      className="inline-flex items-center rounded-md border border-border bg-card px-3.5 py-2 text-sm font-medium transition-colors hover:bg-secondary"
+                    >
+                      Get a free API key
+                    </a>
+                  </div>
+                </>
+              ) : (
+                <>
+                  <h3 className="text-base font-semibold">Want to build on real data?</h3>
+                  <p className="mt-1 text-sm text-muted-foreground">
+                    <a href={productLinks.home("article_cta")} rel="noopener" className="font-medium text-primary hover:underline">
+                      RealMarketAPI
+                    </a>{" "}
+                    gives you REST and WebSocket access to forex, gold and crypto prices, candles and indicators. Start with
+                    the docs or grab a free API key.
+                  </p>
+                  <div className="mt-4 flex flex-wrap gap-2">
+                    <a
+                      href={productLinks.register("article_cta")}
+                      rel="noopener"
+                      className="inline-flex items-center rounded-md bg-primary px-3.5 py-2 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
+                    >
+                      Get a free API key
+                    </a>
+                    <a
+                      href={productLinks.docs("article_cta")}
+                      rel="noopener"
+                      className="inline-flex items-center rounded-md border border-border bg-card px-3.5 py-2 text-sm font-medium transition-colors hover:bg-secondary"
+                    >
+                      Read the docs
+                    </a>
+                  </div>
+                </>
+              )}
             </div>
           </article>
 
